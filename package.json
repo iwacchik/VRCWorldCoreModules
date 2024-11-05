@@ -1,14 +1,15 @@
 {
-  "name": "com.yourcompany.yourpackage",
+  "name": "com.iwacchilab.worldcore",
   "version": "0.0.1",
-  "displayName": "Your Package Name",
-  "description": "A brief description of what your package does.",
-  "url": "https://github.com/iwacchik/VRCPackageTemplate.git",
+  "displayName": "IwacchiLab - World Core",
+  "description": "IwacchiLab's Core modules for VRChat World.",
+  "url": "https://github.com/iwacchik/VRCWorldCoreModules.git",
   "unity": "2022.3",
   "author": {
-    "name": "Your Name",
-    "email": "your-email@example.com"
+    "name": "iwacchi",
+    "email": "iwacchi.kz@gmail.com"
   },
   "vpmDependencies": {
+    "com.vrchat.worlds": "^3.7"
   }
 }

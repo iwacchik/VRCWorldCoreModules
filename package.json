@@ -1,15 +1,15 @@
 {
   "name": "com.iwacchilab.worldcore",
-  "version": "0.0.3-persistence-beta",
+  "version": "0.0.4",
   "displayName": "IwacchiLab - World Core",
   "description": "IwacchiLab's Core modules for VRChat World.",
   "url": "https://github.com/iwacchik/VRCWorldCoreModules.git",
   "unity": "2022.3",
   "author": {
     "name": "iwacchi",
-    "email": "iwacchi.kz@gmail.com"
+    "email": "iwacchi.tensai@gmail.com"
   },
   "vpmDependencies": {
-    "com.vrchat.worlds": "^3.7"
+    "com.vrchat.worlds": "^3.7.4"
   }
 }

@@ -101,13 +101,14 @@ jobs:
           tag_name: ${{ env.version }}
 
       # Trigger the VCCListing repository's build-listing.yml workflow
-      # This step runs only if both VCCLISTING_REPO (Variable) and VCCLISTING_TOKEN (Secret) are configured.
-      # It notifies the central index repository to update its vpm-index.json after this package is released.
       - name: Trigger VCCListing Listing Rebuild
-        if: ${{ vars.VCCLISTING_REPO != '' && secrets.VCCLISTING_TOKEN != '' }}
+        env:
+          VCC_REPO: ${{ vars.VCCLISTING_REPO }}
+          VCC_TOKEN: ${{ secrets.VCCLISTING_TOKEN }}
+        if: ${{ env.VCC_REPO != '' && env.VCC_TOKEN != '' }}
         run: |
           curl -X POST \
-            -H "Authorization: Bearer ${{ secrets.VCCLISTING_TOKEN }}" \
+            -H "Authorization: Bearer $VCC_TOKEN" \
             -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/${{ vars.VCCLISTING_REPO }}/actions/workflows/build-listing.yml/dispatches" \
+            "https://api.github.com/repos/$VCC_REPO/actions/workflows/build-listing.yml/dispatches" \
             -d '{"ref":"main"}'

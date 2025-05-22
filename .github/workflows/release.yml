@@ -2,7 +2,10 @@ name: Build Release
 
 on: 
   workflow_dispatch:
-
+  push:
+    branches: main
+    paths: package.json
+    
 jobs:
 
   # Validate Repository Configuration
@@ -96,3 +99,16 @@ jobs:
             ${{ env.unityPackage }}
             ${{ env.packagePath }}/package.json
           tag_name: ${{ env.version }}
+
+      # Trigger the VCCListing repository's build-listing.yml workflow
+      - name: Trigger VCCListing Listing Rebuild
+        env:
+          VCC_REPO: ${{ vars.VCCLISTING_REPO }}
+          VCC_TOKEN: ${{ secrets.VCCLISTING_TOKEN }}
+        if: ${{ env.VCC_REPO != '' && env.VCC_TOKEN != '' }}
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer $VCC_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$VCC_REPO/actions/workflows/build-listing.yml/dispatches" \
+            -d '{"ref":"main"}'

@@ -10,6 +10,6 @@
     "email": "iwacchi.tensai@gmail.com"
   },
   "vpmDependencies": {
-    "com.vrchat.worlds": ">=3.8.1-0"
+    "com.vrchat.worlds": "^3.8.1"
   }
 }
